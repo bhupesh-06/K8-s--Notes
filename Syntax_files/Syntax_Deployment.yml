@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <app_name>
+  labels:
+    app: <app_name>
+    tier: <frontend/backend>
+    env: prod
+spec:
+  selector:
+    matchLabels:
+      app: <app_name>
+  template:
+    metadata:
+      labels:
+        app: <app_name>
+    spec:
+      containers:
+        - name: <container_name>
+          image: <image_name/tag>
+          ports:
+            - containerPort: <container_port>
+          env:
+            - name: <official_env>
+              valueFrom:
+                secretKeyRef:
+                  name: <secret_name>
+                  key: <eg. username/password>
+            - name: <official_env>
+              valueFrom:
+                configKeyRef:
+                  name: <configmap_name>
+                  key: <eg. database_endpoint>

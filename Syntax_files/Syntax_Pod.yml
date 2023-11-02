@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    app: myapp
+    type: prod
+spec:
+  containers:
+    - name: myapp-container
+      image: <image>
+      resources:
+        limits:
+          memory: "2Gi"
+          cpu: "2500m"
+      ports:
+        - containerPort

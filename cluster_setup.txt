@@ -1,0 +1,16 @@
+eksctl create cluster \
+	--name mongo-cluster \
+	--region eu-north-1 \
+	--version 1.23 \
+	--node-type t3.micro \
+	--nodegroup-name linux-nodes \
+	--nodes 2
+	
+	
+### Deleting cluster by aws cli ####
+
+kubectl delete svc service-name
+aws eks delete-nodegroup --nodegroup-name my-nodegroup --cluster-name my-cluster
+aws cloudformation delete-stack --stack-name node-stack
+aws eks delete-cluster --name my-cluster
+

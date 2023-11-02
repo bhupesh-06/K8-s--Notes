@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replica-set
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: myapp
+      type: frontend
+  template:
+    metadata:
+      name: myapp-prod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+        - name: myapp-prod
+          image: <image>
+          ports:
+            - containerPort: <port>
